@@ -36,9 +36,10 @@ class Player(GameSprite):
 #Створюємо віконце
 win_width = 700
 win_height = 500
-display.set_caption("Лабіринт")
+
 window = display.set_mode((win_width, win_height))
-back = (119, 210, 223) # задаємо колір відповідно до колірної схеми RGB
+display.set_caption("Лабіринт")
+back = transform.scale(image.load("jungle.jpg"), (win_width, win_height))  # задаємо колір відповідно до колірної схеми RGB
  
 #Створюємо стіни картинки
 w1 = GameSprite('platform2.png',win_width/2 - win_width/3, win_height/2, 300, 50)
@@ -52,7 +53,7 @@ run = True
 while run:
  #цикл спрацьовує кожну 0.05 секунд
     time.delay(50)
-    window.fill(back)#зафарбовуємо вікно кольором
+    window.blit(back, (0,0))#зафарбовуємо вікно кольором
  
     for e in event.get():
         if e.type == QUIT:
